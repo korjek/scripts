@@ -1,0 +1,332 @@
+name: "spc"
+replicas: "3"
+docker_registry: "dsl.melexis.com:5000"
+image_pull_policy: "Always"
+dp_requested_memory: "1280M"
+mdp_requested_memory: "2560M"
+mq_requested_memory: "1536M"
+
+DP_JAVA_OPTS: "-Xmx1024m -Xms1024m -XX:+PrintGCDetails"
+MDP_JAVA_OPTS: "-server -Xms2048m -Xmx2048m -XX:+PrintGCDetails"
+
+GRAPHITE_PORT: "2003"
+GRAPHITE_USER: "guest"
+GRAPHITE_PASSWORD: "guest"
+SPC_DB_USER: "spc4mlx2"
+
+ACTIVEMQ_DEFAULT_BROKER_URL: "tcp://localhost:61616"
+SPC_API_URL: "http://spc-api:8080"
+PARAM_DATA_ENABLED: "false"
+
+XTD_MOUNT_POINT: "/mnt/xtd"
+SPC4MLX2_MOUNT_POINT: "/mnt/output_spc4mlx2"
+DOSTESTERS_PTS_DATA_MOUNT_POINT: "/mnt/dostesters/pts_data"
+DOSTESTERS_PTS_RESOURCE_MOUNT_POINT: "/mnt/dostesters/pts_resource"
+PINTAIL_PROFILE_MOUNT_POINT: "/mnt/pintail-profile"
+DLOG_MOUNT_POINT: "/mnt/dlog"
+MDP_CFG_MOUNT_POINT: "/etc/spc4mlx2"
+
+TRANSLATOR_PROFILE_PATH: "/mnt/pintail-profile/swiftest/profile.xml"
+
+MAIL_HOST: "smtp.colo.elex.be"
+SWAGGER_SCHEMA: "https"
+
+erfurt:
+  DEPLOY_SITE: "Erfurt"
+  ORGANIZATION: "E02"
+  LOCALTIME: '''Europe/Berlin'''
+
+  LINUXTESTERS_CAPACITY: "150Gi"
+  PINTAIL_PROFILE_CAPACITY: "43Gi"
+  XTDTESTERS_CAPACITY: "10Gi"
+  SPC4MLX2_CAPACITY: "10Gi"
+  DLOG_CAPACITY: "10Gi"
+  PTSDATA_CAPACITY: "10Gi"
+  PTSRESOURCE_CAPACITY: "10Gi"
+
+  TRANSLATOR_PROFILE_PATH: "/mnt/pintail-profile/swiftest/profiledat.xml"
+
+sensors:
+  DEPLOY_SITE: "Ieper"
+  ORGANIZATION: "I02"
+  LOCALTIME: '''Europe/Brussels'''
+
+  LINUXTESTERS_CAPACITY: "50Gi"
+  PINTAIL_PROFILE_CAPACITY: "48Gi"
+  XTDTESTERS_CAPACITY: "50Gi"
+  SPC4MLX2_CAPACITY: "10Gi"
+  DLOG_CAPACITY: "10Gi"
+  PTSDATA_CAPACITY: "10Gi"
+  PTSRESOURCE_CAPACITY: "10Gi"
+
+sofia:
+  DEPLOY_SITE: "Sofia"
+  ORGANIZATION: "S02"
+  LOCALTIME: '''Europe/Sofia'''
+
+  LINUXTESTERS_CAPACITY: "10Gi"
+  PINTAIL_PROFILE_CAPACITY: "48Gi"
+  XTDTESTERS_CAPACITY: "10Gi"
+  SPC4MLX2_CAPACITY: "10Gi"
+  DLOG_CAPACITY: "10Gi"
+  PTSDATA_CAPACITY: "10Gi"
+  PTSRESOURCE_CAPACITY: "10Gi"
+
+kuching:
+  DEPLOY_SITE: "Kuching"
+  ORGANIZATION: "K02"
+  LOCALTIME: '''Asia/Kuching'''
+
+  LINUXTESTERS_CAPACITY: "10Gi"
+  PINTAIL_PROFILE_CAPACITY: "48Gi"
+  XTDTESTERS_CAPACITY: "10Gi"
+  SPC4MLX2_CAPACITY: "10Gi"
+  DLOG_CAPACITY: "10Gi"
+  PTSDATA_CAPACITY: "10Gi"
+  PTSRESOURCE_CAPACITY: "10Gi"
+
+corbeil:
+  DEPLOY_SITE: "Corbeil"
+  ORGANIZATION: "C02"
+  LOCALTIME: '''Europe/Paris'''
+
+  LINUXTESTERS_CAPACITY: "10Gi"
+  PINTAIL_PROFILE_CAPACITY: "48Gi"
+  XTDTESTERS_CAPACITY: "10Gi"
+  SPC4MLX2_CAPACITY: "10Gi"
+  DLOG_CAPACITY: "10Gi"
+  PTSDATA_CAPACITY: "10Gi"
+  PTSRESOURCE_CAPACITY: "10Gi"
+
+LOCAL:
+  version: "latest"
+  mdp_version: "latest"
+  replicas: "1"
+  image_pull_policy: "Never"
+  LOCALTIME: '''Europe/Brussels'''
+
+  dp_requested_memory: "512M"
+  mdp_requested_memory: "1536M"
+
+  DP_JAVA_OPTS: "-Xmx256m -Xms128m -XX:+PrintGCDetails"
+  MDP_JAVA_OPTS: "-server -Xmx1024m -Xms256m -XX:+PrintGCDetails"
+
+  ORGANIZATION: "E02"
+  DEPLOY_SITE: "Erfurt"
+
+  SWAGGER_HOST: "esb-test.erfurt.elex.be/spc4mlx2-dataprocessor-mdp"
+  GRAPHITE_HOST: "spc-graphite"
+
+  SPC_MDP_DB_URL: "jdbc:postgresql://spc-postgres/spc4mlx2"
+  ACTIVEMQ_GLOBAL_BROKER_URL: "tcp://spc-activemq-multi:61616"
+  ACTIVEMQ_LOCAL_BROKER_URL: "tcp://spc-activemq-multi:61616"
+  GRAPHITE_EVENTS_URL: "http://spc-graphite:81/events/"
+  JIRA_SERVICE_BASE_URL: "https://esb-test.colo.elex.be/cxf/jiraservice/v1/"
+  JIRA_SMART_URL: "https://sjl-test.colo.elex.be"
+  SPC_FRONTEND_URL: "http://spc-frontend:8181"
+
+  XTD_MOUNT_POINT: "/mnt/xtd"
+  XTDTESTERD_MOUNT_PATH: "/Users/driesdemeurisse/Dev/Projects/spc4mlx2-integration-tests/src/test/resources/mnt/xtd"
+
+  XTDTESTERD_MOUNT_SERVER: "192.168.99.1"
+
+  SPC4MLX2_MOUNT_POINT: "/mnt/output_spc4mlx2"
+  SPC4MLX2_MOUNT_PATH: "/Users/driesdemeurisse/Dev/Temp/spc_output/"
+  SPC4MLX2_MOUNT_SERVER: "192.168.99.1"
+
+  DLOG_MOUNT_POINT: "/mnt/dlog"
+  DLOG_MOUNT_PATH: "/Users/driesdemeurisse/Dev/Projects/spc4mlx2-integration-tests/src/test/resources/mnt/dlog"
+  DLOG_MOUNT_SERVER: "192.168.99.1"
+
+  LINUXTESTERS_MOUNT_POINT: "/mnt/linuxtesters"
+  LINUXTESTERS_MOUNT_PATH: "/Users/driesdemeurisse/Dev/Projects/spc4mlx2-integration-tests/src/test/resources/mnt/linuxtesters"
+  LINUXTESTERS_MOUNT_SERVER: "192.168.99.1"
+
+  PINTAIL_PROFILE_MOUNT_POINT: "/mnt/pintail-profile"
+  PINTAIL_PROFILE_MOUNT_PATH: "/Users/driesdemeurisse/Dev/Projects/spc4mlx2-integration-tests/src/test/resources/mnt/dlog/pintail"
+  PINTAIL_PROFILE_MOUNT_SERVER: "192.168.99.1"
+
+  DOSTESTERS_PTS_DATA_MOUNT_POINT: "/mnt/dostesters/pts_data"
+  DOSTESTERS_PTS_DATA_MOUNT_PATH: "/Users/driesdemeurisse/Dev/Projects/spc4mlx2-integration-tests/src/test/resources/mnt/dostesters/pts_data"
+  DOSTESTERS_PTS_RESOURCE_MOUNT_POINT: "/mnt/dostesters/pts_resource"
+  DOSTESTERS_PTS_RESOURCE_MOUNT_PATH: "/Users/driesdemeurisse/Dev/Projects/spc4mlx2-integration-tests/src/test/resources/mnt/dostesters/pts_resource"
+  DOSTESTERS_MOUNT_SERVER: "192.168.99.1"
+
+  TRANSLATOR_PROFILE_PATH: "/mnt/pintail-profile/swiftest/profile.xml"
+  MDP_CFG_MOUNT_POINT: "/etc/spc4mlx2"
+
+  LINUXTESTERS_CAPACITY: "1Gi"
+  PINTAIL_PROFILE_CAPACITY: "1Gi"
+  XTDTESTERS_CAPACITY: "1Gi"
+  SPC4MLX2_CAPACITY: "1Gi"
+  DLOG_CAPACITY: "1Gi"
+  PTSDATA_CAPACITY: "1Gi"
+  PTSRESOURCE_CAPACITY: "1Gi"
+
+TEST:
+  version: "latest"
+  mdp_version: "latest"
+
+  GRAPHITE_HOST: "graphite-test.colo.elex.be"
+
+  ACTIVEMQ_GLOBAL_BROKER_URL: "failover:(tcp://spc4mlx2esb-a-test:61602,tcp://spc4mlx2esb-b-test:61602)"
+  ACTIVEMQ_LOCAL_BROKER_URL: "failover:(tcp://spc4mlx2esb-a-test:61601,tcp://spc4mlx2esb-b-test:61601)"
+  GRAPHITE_EVENTS_URL: "https://graphite-test.colo.elex.be/events/"
+  JIRA_SERVICE_BASE_URL: "https://esb-test.colo.elex.be/cxf/jiraservice/v1/"
+  JIRA_SMART_URL: "https://sjl-test.colo.elex.be"
+  SPC_FRONTEND_URL: "https://esb-test.colo.elex.be/spc4mlx2-frontend"
+
+  XTDTESTERD_MOUNT_PATH: "/vol/xtdtesters_test/xtdtesters_test"
+  XTDTESTERD_MOUNT_SERVER: "xtdtesters-store-test"
+  SPC4MLX2_MOUNT_PATH: "/vol/output_spc4mlx2_test/output_spc4mlx2_test"
+  SPC4MLX2_MOUNT_SERVER: "spc4mlx2-store"
+  DLOG_MOUNT_PATH: "/vol/dlogtest/dlogtest"
+  DLOG_MOUNT_SERVER: "dlogstorage"
+
+  DOSTESTERS_PTS_DATA_MOUNT_PATH: "/mnt/dostesters_test/dostesters_test"
+  DOSTESTERS_PTS_RESOURCE_MOUNT_PATH: "/mnt/dostesters_test/pts_resource"
+  DOSTESTERS_MOUNT_SERVER: "dostesters"
+  PINTAIL_PROFILE_MOUNT_PATH: "/pintail_profile_test"
+  PINTAIL_PROFILE_MOUNT_SERVER: "pintail-profile"
+  LINUXTESTERS_MOUNT_PATH: "/mnt/linuxtesters_test"
+  LINUXTESTERS_MOUNT_PATH_ALL: "/mnt/linuxtesters_test"
+  LINUXTESTERS_MOUNT_SERVER: "linuxtesters-store-test"
+  LINUXTESTERS_MOUNT_POINT: "/mnt/linuxtesters"
+
+  erfurt:
+    SWAGGER_HOST: "esb-test.erfurt.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb-test.erfurt.elex.be:5432/spc4mlx2"
+
+    DOSTESTERS_PTS_DATA_MOUNT_PATH: "/mnt/dostesters_test/pts_data"
+    PINTAIL_PROFILE_MOUNT_PATH: "/vol/pintail_profile_test"
+    PINTAIL_PROFILE_MOUNT_SERVER: "netappvs1.erfurt.elex.be"
+
+  sensors:
+    SWAGGER_HOST: "esb-test.sensors.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb-test.sensors.elex.be:5432/spc4mlx2"
+
+  sofia:
+    SWAGGER_HOST: "esb-test.sofia.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb-test.sofia.elex.be:5432/spc4mlx2"
+
+  kuching:
+    SWAGGER_HOST: "esb-test.kuching.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb-test.kuching.elex.be:5432/spc4mlx2"
+
+  corbeil:
+    SWAGGER_HOST: "esb-test.corbeil.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb-test.corbeil.elex.be:5432/spc4mlx2"
+
+UAT:
+  version: "1.4.0-bc3aba85"
+  docker_registry: "dsl.melexis.com:5001"
+  mdp_version: "2.7.1-4c2f8e1c"
+
+  GRAPHITE_HOST: "graphite-uat.colo.elex.be"
+
+  ACTIVEMQ_GLOBAL_BROKER_URL: "failover:(tcp://spc4mlx2esb-a-uat:61602,tcp://spc4mlx2esb-b-uat:61602)"
+  ACTIVEMQ_LOCAL_BROKER_URL: "failover:(tcp://spc4mlx2esb-a-uat:61601,tcp://spc4mlx2esb-b-uat:61601)"
+  GRAPHITE_EVENTS_URL: "https://graphite-uat.colo.elex.be/events/"
+  JIRA_SERVICE_BASE_URL: "https://esb-uat.colo.elex.be/cxf/jiraservice/v1/"
+  JIRA_SMART_URL: "https://sjl-uat.colo.elex.be"
+  SPC_FRONTEND_URL: "https://esb-uat.colo.elex.be/spc4mlx2-frontend"
+
+  XTDTESTERD_MOUNT_PATH: "/vol/xtdtesters_uat/xtdtesters_uat"
+  XTDTESTERD_MOUNT_SERVER: "xtdtesters-store-uat"
+  SPC4MLX2_MOUNT_PATH: "/vol/output_spc4mlx2_uat/output_spc4mlx2_uat"
+  SPC4MLX2_MOUNT_SERVER: "spc4mlx2-store"
+  DLOG_MOUNT_PATH: "/vol/dloguat/dloguat"
+  DLOG_MOUNT_SERVER: "dlogstorage"
+  DOSTESTERS_PTS_DATA_MOUNT_PATH: "/mnt/dostesters_uat/dostesters_uat"
+  DOSTESTERS_PTS_RESOURCE_MOUNT_PATH: "/mnt/dostesters_uat/pts_resource"
+  DOSTESTERS_MOUNT_SERVER: "dostesters"
+  PINTAIL_PROFILE_MOUNT_PATH: "/pintail_profile_uat"
+  PINTAIL_PROFILE_MOUNT_SERVER: "pintail-profile"
+  LINUXTESTERS_MOUNT_PATH: "/mnt/linuxtesters_uat"
+  LINUXTESTERS_MOUNT_PATH_ALL: "/mnt/linuxtesters_uat"
+  LINUXTESTERS_MOUNT_SERVER: "linuxtesters-store-uat"
+  LINUXTESTERS_MOUNT_POINT: "/mnt/linuxtesters"
+
+  erfurt:
+    SWAGGER_HOST: "esb-uat.erfurt.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb-uat.erfurt.elex.be:5432/spc4mlx2"
+
+    DOSTESTERS_PTS_DATA_MOUNT_PATH: "/mnt/dostesters_uat/pts_data"
+    PINTAIL_PROFILE_MOUNT_PATH: "/vol/pintail_profile_uat"
+    PINTAIL_PROFILE_MOUNT_SERVER: "netappvs1.erfurt.elex.be"
+
+  sensors:
+    SWAGGER_HOST: "esb-uat.sensors.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb-uat.sensors.elex.be:5432/spc4mlx2"
+
+  sofia:
+    SWAGGER_HOST: "esb-uat.sofia.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb-uat.sofia.elex.be:5432/spc4mlx2"
+
+  kuching:
+    SWAGGER_HOST: "esb-uat.kuching.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb-uat.kuching.elex.be:5432/spc4mlx2"
+
+  corbeil:
+    SWAGGER_HOST: "esb-uat.corbeil.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb-uat.corbeil.elex.be:5432/spc4mlx2"
+
+STABLE:
+  version: "1.4.0-bc3aba85"
+  docker_registry: "dsl.melexis.com:5002"
+  mdp_version: "2.7.1-4c2f8e1c"
+
+  GRAPHITE_HOST: "graphite.colo.elex.be"
+
+  ACTIVEMQ_GLOBAL_BROKER_URL: "failover:(tcp://spc4mlx2esb-a:61602,tcp://spc4mlx2esb-b:61602)"
+  ACTIVEMQ_LOCAL_BROKER_URL: "failover:(tcp://spc4mlx2esb-a:61601,tcp://spc4mlx2esb-b:61601)"
+  GRAPHITE_EVENTS_URL: "https://graphite.colo.elex.be/events/"
+  JIRA_SERVICE_BASE_URL: "https://esb.colo.elex.be/cxf/jiraservice/v1/"
+  JIRA_SMART_URL: "https://sjl.colo.elex.be"
+  SPC_FRONTEND_URL: "https://esb.colo.elex.be/spc4mlx2-frontend"
+
+  XTDTESTERD_MOUNT_PATH: "/vol/xtdtesters/xtdtesters"
+  XTDTESTERD_MOUNT_SERVER: "xtdtesters"
+  SPC4MLX2_MOUNT_PATH: "/vol/output_spc4mlx2_prod/output_spc4mlx2_prod"
+  SPC4MLX2_MOUNT_SERVER: "spc4mlx2-store"
+  DLOG_MOUNT_PATH: "/vol/dlog/dlog"
+  DLOG_MOUNT_SERVER: "dlogstorage"
+  DOSTESTERS_PTS_DATA_MOUNT_PATH: "/mnt/dostesters/pts_data"
+  DOSTESTERS_PTS_RESOURCE_MOUNT_PATH: "/mnt/dostesters/pts_resource"
+  DOSTESTERS_MOUNT_SERVER: "dostesters"
+  PINTAIL_PROFILE_MOUNT_PATH: "/vol/dlog/dlog/pintail"
+  PINTAIL_PROFILE_MOUNT_SERVER: "pintail-profile"
+  LINUXTESTERS_MOUNT_PATH: "/mnt/linuxtesters/testlog"
+  LINUXTESTERS_MOUNT_PATH_ALL: "/mnt/linuxtesters"
+  LINUXTESTERS_MOUNT_SERVER: "linuxtesters"
+  LINUXTESTERS_MOUNT_POINT: "/mnt/linuxtesters/testlog"
+
+  erfurt:
+    SWAGGER_HOST: "esb.erfurt.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb.erfurt.elex.be:5432/spc4mlx2"
+
+    LINUXTESTERS_MOUNT_PATH: "/mnt/linuxtesters"
+    LINUXTESTERS_MOUNT_POINT: "/mnt/linuxtesters"
+    PINTAIL_PROFILE_MOUNT_PATH: "/mnt/homes/home/pintail"
+    PINTAIL_PROFILE_MOUNT_SERVER: "users"
+
+  sensors:
+    replicas: "5"
+    SWAGGER_HOST: "esb.sensors.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb.sensors.elex.be:5432/spc4mlx2"
+
+    LINUXTESTERS_MOUNT_SERVER: "linuxtest"
+
+  sofia:
+    replicas: "5"
+    SWAGGER_HOST: "esb.sofia.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb.sofia.elex.be:5432/spc4mlx2"
+
+  kuching:
+    replicas: "4"
+    SWAGGER_HOST: "esb.kuching.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb.kuching.elex.be:5432/spc4mlx2"
+
+  corbeil:
+    SWAGGER_HOST: "esb.corbeil.elex.be/spc4mlx2-dataprocessor-mdp"
+    SPC_MDP_DB_URL: "jdbc:postgresql://mdpdb.corbeil.elex.be:5432/spc4mlx2"

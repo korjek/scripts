@@ -1,0 +1,29 @@
+#limits:
+#
+#memory
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: linuxtesters-all-pv
+spec:
+  capacity:
+    storage: {{ LINUXTESTERS_CAPACITY }}
+  accessModes:
+  - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    path: {{ LINUXTESTERS_MOUNT_PATH_ALL }}
+    server: {{ LINUXTESTERS_MOUNT_SERVER_ALL }}
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: linuxtesters-all-pvc
+spec:
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: {{ LINUXTESTERS_CAPACITY }}
+  volumeName: linuxtesters-all-pv
