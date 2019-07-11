@@ -1,0 +1,17 @@
+#Replication
+#Check that replication has been triggered manually
+
+kubernetes.labels.app: artifactory-mlx AND kubernetes.host: *colo.elex.be  AND message: "Replication activated manually"
+
+#Check that replication has been started
+kubernetes.labels.app: artifactory-mlx AND kubernetes.host: *colo.elex.be  AND message: "Starting local folder replication for 'yum-rh6-snapshot-local-colo'"
+
+#Check that replication has feenished
+kubernetes.labels.app: artifactory-mlx AND kubernetes.host: *colo.elex.be  AND message: "Completed local  org.artifactory.addon.replication.core.push.strategy.PushReplicationStrategyExecutor folder replication for docker-snapshot-local-colo"
+Completed local  org.artifactory.addon.replication.core.push.full.FullPushReplicationStrategy folder replication for bower-release-local-colo
+
+#Problem with threads
+[WARN ] (o.a.s.ArtifactoryConcurrentExecutor:71) - Task org.artifactory.concurrent.ArtifactoryRunnable@304e1fdf was rejected by scheduler: Task org.artifactory.concurrent.ArtifactoryRunnable@304e1fdf rejected from java.util.concurrent.ThreadPoolExecutor@1d92fe51[Running, pool size = 16, active threads = 16, queued tasks = 10000, completed tasks = 506154]
+
+
+2019-02-14 13:02:52,314 [http-nio-8081-exec-63] [ERROR] (o.a.s.a.AsyncAdvice :299) - Task ReflectiveMethodInvocation: public abstract java.util.concurrent.Future org.artifactory.api.version.VersionInfoService.getRemoteVersioningAsync(java.util.Map); target is of class [org.artifactory.version.VersionInfoServiceImpl] rejected by scheduler: Executor [org.artifactory.schedule.ArtifactoryConcurrentExecutor@49dd0a89] did not accept task: org.artifactory.schedule.aop.AsyncAdvice$$Lambda$661/1496227317@70d2dca1

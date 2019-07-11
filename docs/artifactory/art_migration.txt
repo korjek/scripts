@@ -1,0 +1,8 @@
+
+Prerequisites
+
+1. Create db.properties.pg
+1. cp db.properties db.properties.derby 
+2. Creat db
+2. Create aliast artifactoryd
+3. Create script

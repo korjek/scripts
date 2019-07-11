@@ -1,0 +1,13 @@
+[VCENTER]
+
+host = vcenter.colo.elex.be
+user = root
+pwd = <password>
+port = 443
+
+[AUTOSTART]
+# Default start delay
+defstartdelay = 600
+# Special vmware hosts
+l = ['ldap', 'mainrouter', 'dns']
+

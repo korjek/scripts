@@ -1,0 +1,17 @@
+Different loggers
+#Debian logger
+    <!-- Debian appender -->^M
+    <appender name="debian" class="ch.qos.logback.core.rolling.RollingFileAppender">^M
+        <File>${artifactory.home}/logs/debian.log</File>^M
+        <encoder>^M
+            <pattern>%date ${artifactory.contextId}[%thread] [%-5p] \(%-20c{3}:%L\) - %m%n</pattern>^M
+        </encoder>^M
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">^M
+            <FileNamePattern>${artifactory.home}/logs/debian.%i.log</FileNamePattern>^M
+            <maxIndex>13</maxIndex>^M
+        </rollingPolicy>^M
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">^M
+            <MaxFileSize>100MB</MaxFileSize>^M
+        </triggeringPolicy>^M
+    </appender>^M
+

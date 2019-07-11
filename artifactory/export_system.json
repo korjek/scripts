@@ -1,0 +1,12 @@
+{
+  "exportPath": "/opt/jfrog/artifactory/backup",
+  "includeMetadata": true,
+  "createArchive": false,
+  "bypassFiltering": false,
+  "verbose": true,
+  "failOnError": true,
+  "failIfEmpty": true,
+  "m2": false,
+  "incrementat": false,
+  "excludeContent": false
+}
